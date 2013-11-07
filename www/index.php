@@ -25,9 +25,12 @@
             
             $param = array(
                 'id' => 'test',
+                'param' => array(
+                    'test' => 'test'
+                ),
                 'src' => '/images/jpg/square.jpg'
             );
-            print_r( paramimg_get_image( $param ) );
+            echo paramimg_get_image( $param );
             
         ?>
         
