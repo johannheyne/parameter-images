@@ -3,7 +3,7 @@ Parameter-Images
 This is a working draft and I am grateful for any kind of participation.
 
 It is about creating an feature loaded solution for handling responsive images on the serverside and the clientside.
-Inspired by [Picturefill.js](https://github.com/scottjehl/picturefill) form Scott Jehl and [Adaptive-Images](https://github.com/MattWilcox/Adaptive-Images) from Matt Wilcox.
+Inspired by [Picturefill.js](https://github.com/scottjehl/picturefill) from Scott Jehl and [Adaptive-Images](https://github.com/MattWilcox/Adaptive-Images) from Matt Wilcox.
 
 Features
 --------
