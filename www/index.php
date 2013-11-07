@@ -1,4 +1,8 @@
-<!DOCTYPE html>
+<?php
+    
+    include( 'paramimg/paramimg-functions.php' );
+    
+?><!DOCTYPE html>
 <html>
     <head>
         <title>Parameter-Images</title>
@@ -17,7 +21,15 @@
     </head>
     <body>
         
-        
+        <?php
+            
+            $param = array(
+                'id' => 'test',
+                'src' => '/images/jpg/square.jpg'
+            );
+            print_r( paramimg_get_image( $param ) );
+            
+        ?>
         
     </body>
 </html>
