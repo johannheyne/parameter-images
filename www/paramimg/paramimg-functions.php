@@ -54,7 +54,7 @@
 
                 if ( $p['param'] ) {
 
-                    $vars['param_array'][] = 'param=' . paramimg_encode_query( array( 'setup' => $p['param'] ) );
+                    $vars['param_array'][] = 'param=' . paramimg_encode_query( array( 'parameters' => $p['param'] ) );
                 }
 
             // }
@@ -96,7 +96,7 @@
         // DEFAULTS {
 
             $defaults = array(
-                'setup' => array(),
+                'parameters' => array(),
                 'compress' => true,
             );
 
@@ -112,9 +112,9 @@
 
         // FUNCTIONALITY {
 
-            if ( $p['setup'] ) {
+            if ( $p['parameters'] ) {
 
-                $return = http_build_query( $p['setup'] );
+                $return = http_build_query( $p['parameters'] );
 
                 if ( $p['compress'] ) {
 
