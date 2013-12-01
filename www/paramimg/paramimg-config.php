@@ -1,5 +1,5 @@
 <?php
-    
+
     /**
      * Parameter-Images Configuration
      *
@@ -7,5 +7,5 @@
      * @link       http://www.parameter-images.de/
      * @since      Release 0.1
      */
-    
+
 ?>

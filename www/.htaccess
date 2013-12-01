@@ -1,12 +1,12 @@
 <IfModule mod_rewrite.c>
-	RewriteEngine On
-	RewriteBase /
-	Options +FollowSymlinks
+    RewriteEngine On
+    RewriteBase /
+    Options +FollowSymlinks
 </IfModule>
 
 # BEGIN Parameter-Images
 <IfModule mod_rewrite.c>
-	#RewriteCond %{REQUEST_URI} !/paramimg-cache/
-	RewriteRule \.(?:jpe?g|gif|png)$ paramimg/paramimg.php
+    #RewriteCond %{REQUEST_URI} !/paramimg-cache/
+    RewriteRule \.(?:jpe?g|gif|png)$ paramimg/paramimg.php
 </IfModule>
 # END Parameter-Images

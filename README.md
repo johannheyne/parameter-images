@@ -16,7 +16,7 @@ serverside cached breakpointbased image variants
 * sharpen
 * image-filters
 * device-pixel-ratio
-  
+
 clientside
 
 * serving and updating just one image via javascript and `<noscript`> fallback
