@@ -91,6 +91,9 @@
 
         /* README {
 
+            Takes an array and builds an query string
+            and optional compresses the query string.
+
         } */
 
         // DEFAULTS {
