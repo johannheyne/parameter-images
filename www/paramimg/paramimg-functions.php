@@ -1,23 +1,7 @@
 <?php
-    
-    /**
-     * Parameter-Images Functions
-     *
-     * @package    Parameter-Images
-     * @link       http://www.parameter-images.de/
-     * @since      Release 0.1
-     */
-    
-    
-    /** 
-     * paramimg_get_image()
-     * 
-     * Returns the complete image html
-     *
-     * @since      Release 0.1
-     * @version    1
-     */
-    
+
+    // Parameter-Images Functions
+
     function paramimg_get_image( $param = array() ) {
 
         $defaults = array(
