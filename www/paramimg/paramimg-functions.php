@@ -6,6 +6,8 @@
 
         /* README {
 
+            Returns the image tag based on the given parameters.
+
         } */
 
         // DEFAULTS {
