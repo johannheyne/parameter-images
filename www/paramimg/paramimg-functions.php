@@ -21,9 +21,9 @@
     function paramimg_get_image( $param = array() ) {
         
         $defaults = array(
-            'id' => false,
-            'param' => false,
-            'src' => false
+            'id' => '',
+            'param' => '',
+            'src' => '',
         );
         
         $param = array_replace_recursive ( $defaults, $param );
