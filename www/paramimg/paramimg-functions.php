@@ -2,92 +2,140 @@
 
     // Parameter-Images Functions
 
-    function paramimg_get_image( $param = array() ) {
+    function paramimg_get_image( $p = array() ) {
 
-        $defaults = array(
-            'id' => '',
-            'param' => '',
-            'src' => '',
-        );
+        /* README {
 
-        $param = array_replace_recursive ( $defaults, $param );
+        } */
 
-        $vars = array(
-            'param_array' => array(),
-            'param_string' => '',
-        );
+        // DEFAULTS {
 
-        if ( $param['param'] ) {
+            $defaults = array(
+                'id' => '',
+                'param' => '',
+                'src' => '',
+            );
 
-            $vars['param_array'][] = 'param=' . paramimg_encode_query( array( 'setup' => $param['param'] ) );
-        }
+            $p = array_replace_recursive( $defaults, $p );
 
-        if ( $param['id'] ) {
+        // }
 
-            $vars['param_array'][] = 'id=' . $param['id'];
-        }
+        // FUNCTION VARIABLES {
 
-        $return = false;
+            $vars = array(
+                'param_array' => array(),
+                'param_string' => '',
+            );
 
-        if ( $param['src'] ) {
+            $return = false;
 
-            if ( $vars['param_array'] ) {
+        // }
 
-                $vars['param_string'] = '?' . implode( '&', $vars['param_array'] );
+        // FUNCTIONALITY {
+
+            if ( $p['param'] ) {
+
+                $vars['param_array'][] = 'param=' . paramimg_encode_query( array( 'setup' => $p['param'] ) );
             }
 
-            $return .= '<img src="' . $param['src'] . $vars['param_string'] . '">';
-        }
+            if ( $p['id'] ) {
+
+                $vars['param_array'][] = 'id=' . $p['id'];
+            }
+
+            if ( $p['src'] ) {
+
+                if ( $vars['param_array'] ) {
+
+                    $vars['param_string'] = '?' . implode( '&', $vars['param_array'] );
+                }
+
+                $return .= '<img src="' . $p['src'] . $vars['param_string'] . '">';
+            }
+
+        // }
 
         return $return;
     }
 
-    function paramimg_encode_query( $param = array() ) {
+    function paramimg_encode_query( $p = array() ) {
 
-        $defaults = array(
-            'setup' => array(),
-            'compress' => true,
-        );
+        /* README {
 
-        $param = array_replace_recursive( $defaults, $param );
+        } */
 
-        $return = false;
+        // DEFAULTS {
 
-        if ( $param['setup'] ) {
+            $defaults = array(
+                'setup' => array(),
+                'compress' => true,
+            );
 
-            $return = http_build_query( $param['setup'] );
+            $p = array_replace_recursive( $defaults, $p );
 
-            if ( $param['compress'] ) {
+        // }
 
-               $return = gzcompress( $return, 9 );
-               $return = rawurlencode( $return );
+        // FUNCTION VARIABLES {
+
+            $return = false;
+
+        // }
+
+        // FUNCTIONALITY {
+
+            if ( $p['setup'] ) {
+
+                $return = http_build_query( $p['setup'] );
+
+                if ( $p['compress'] ) {
+
+                   $return = gzcompress( $return, 9 );
+                   $return = rawurlencode( $return );
+                }
             }
-        }
+
+        // }
 
         return $return;
     }
 
-    function paramimg_decode_query( $param = array() ) {
+    function paramimg_decode_query( $p = array() ) {
 
-        $defaults = array(
-            'query' => false,
-            'uncompress' => true
-        );
+        /* README {
 
-        $param = array_replace_recursive( $defaults, $param );
+        } */
 
-        $return = false;
+        // DEFAULTS {
 
-        if ( $param['query'] ) {
+            $defaults = array(
+                'query' => false,
+                'uncompress' => true
+            );
 
-            if ( $param['uncompress'] ) {
+            $p = array_replace_recursive( $defaults, $p );
 
-                $param['query'] = rawurldecode( $param['query'] );
-                $param['query'] = gzuncompress( $param['query'] );
+        // }
+
+        // FUNCTION VARIABLES {
+
+            $return = false;
+
+        // }
+
+        // FUNCTIONALITY {
+
+            if ( $p['query'] ) {
+
+                if ( $p['uncompress'] ) {
+
+                    $p['query'] = rawurldecode( $p['query'] );
+                    $p['query'] = gzuncompress( $p['query'] );
+                }
+
+                parse_str( $p['query'], $return );
             }
 
-            parse_str( $param['query'], $return );
-        }
+        // }
 
         return $return;
     }
