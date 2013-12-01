@@ -135,6 +135,9 @@
 
         /* README {
 
+            Takes an (compressed) query string of an array
+            and returns an php array.
+
         } */
 
         // DEFAULTS {
