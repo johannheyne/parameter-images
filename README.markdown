@@ -27,7 +27,7 @@ $setup = array(
 <!-- html -->
 <img data-resp="{'maxw-400':'1','maxw-800':'2','maxw-1200':'3'}" 
 	 data-current-size="3" 
-	 src="image.jpg?behavior=3&size=1">
+	 src="image.jpg?behavior=behaviorname&size=3">
 ```
 
 Anhand des Data Attributes ```data-current-size``` und dem im Data Attribut ```data-resp``` gegebenem JSON-Objektes kann ein Javaskript bei Größenveränderung des Browserfensters überprüfen, ob eine neue Bildgröße / -variante eforderlich ist. Das Skript würde den scr Parameter size anpassen, was ein Neuladen des Bildes mit den veränderten Maßen bewirkt.
