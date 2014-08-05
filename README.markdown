@@ -24,7 +24,7 @@ $setup = array(
 ```
 
 ```html
-// html
+<!-- html -->
 <img data-resp="{'maxw-400':'1','maxw-800':'2','maxw-1200':'3'}" 
 	 data-current-size="3" 
 	 src="image.jpg?behavior=3&size=1">
