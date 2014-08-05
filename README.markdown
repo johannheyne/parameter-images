@@ -31,3 +31,7 @@ $setup = array(
 ```
 
 Anhand des Data Attributes ```data-current-size``` und dem im Data Attribut ```data-resp``` gegebenem JSON-Objektes kann ein Javaskript bei Größenveränderung des Browserfensters überprüfen, ob eine neue Bildgröße / -variante eforderlich ist. Das Skript würde den scr Parameter size anpassen, was ein Neuladen des Bildes mit den veränderten Maßen bewirkt.
+
+Die Zukunf
+----------------
+Die offizielle zukünftige Lösung liegt derzeit im picture Tag sowie dem srcset und size Attribut. Bei diesen Lösungen ist es ebenfalls notwendig, dass verschiedene Bildvarianten vom Server bereitgestellt werden. Parameter-Images könnte das automatisiert leisten, sodass dies nicht mehr händisch erledigt werden muss. Sowohl beim picture Tag als auch bei der srcset Variante muss das Verhalten des Bildes über Mediaqueries syncron zu den in den Stylesheets definierten Mediaqueries angegeben werden. Parameter-Images ist bestrebt, das Verhalten der Bilder zentral zu definieren, um Fehlerquellen und Arbeitszeit zu veringern.
