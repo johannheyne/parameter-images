@@ -1,7 +1,12 @@
 Parameter-Images
 ================
 
-Der Entwurf 2 zu einer gesamtheitlichen Lösung zu Bildern in RWD geht von dem Ansatz aus, dass das Verhalten der Bilder zentral über eine Variable in PHP definiert wird. Aus ihr werden automatisch die Mediaqueries in ein separates Stylesheet abgeleitet. Ein Javascript überwacht Veränderungen des Browserfenster und überprüft, ob ein Bild neu geladen werden muss. Die dafür notwendigen Informationen bezieht es aus einem Data Attribut im IMG-Tag.
+Ganzheitliche Lösung zu Bildern in Responsive Web Design (RWD).
+
+- clientseitige Steuerung der responsiven Bildvarianten
+- serverseitiges Bildmanagement
+
+Der Entwurf 2 zu einer gesamtheitlichen Lösung zu Bildern in RWD geht von dem Ansatz aus, dass das responsive Verhalten und die atomatische Generierung der Bilder zentral über eine Variable in PHP definiert wird. Aus ihr werden automatisch die Mediaqueries in ein separates Stylesheet abgeleitet. Ein Javascript überwacht Veränderungen des Browserfenster und überprüft, ob ein Bild neu geladen werden muss. Die dafür notwendigen Informationen bezieht es aus einem Data Attribut im IMG-Tag.
 
 ```php
 // php
