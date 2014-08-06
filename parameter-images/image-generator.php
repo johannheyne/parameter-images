@@ -28,13 +28,53 @@
 
 	// }
 
-	// SETUP NEW IMAGE PARMS {
+	// GET THE IMAGE SETUP DATA OF BREAKPOINT {
 
-		$stat['new_w'] = 200;
-		$stat['new_h'] = 200;
+		if ( ! isset( $_GET['breakpoint'] ) ) {
+
+			if ( isset( $_COOKIE['devicedata'] ) ) {
+
+				$stat['devicedata'] = json_decode( stripslashes( $_COOKIE['devicedata'] ), true );
+				$stat['window_width'] = $stat['devicedata']['window']['width'];
+			}
+			else {
+
+				$stat['window_width'] = 9999;
+			}
+
+			ksort( $setup[ $_GET['behavior'] ] );
+			$temp_breakpoint = 0;
+
+			foreach ( $setup[ $_GET['behavior'] ] as $breakpoint => $item ) {
+
+		    	if ( 
+					! isset( $stat['setup'] ) 
+					OR ( $breakpoint >= $stat['window_width'] AND $temp_breakpoint < $stat['window_width'] ) 
+				) {
+
+					$stat['setup'] = $item;
+
+					$temp_breakpoint = $breakpoint;
+				}
+			}
+		}
+		else {
+
+			if ( isset( $setup[ $_GET['behavior'] ][ $_GET['breakpoint'] ] ) ) {
+
+				$stat['setup'] = $setup[ $_GET['behavior'] ][ $_GET['breakpoint'] ];
+			}
+		}
+
+	// }
+
+	// SETUP PARAMETERS OF NEW IMAGE {
+
+		$stat['new_w'] = $stat['setup']['img_width'];
+		$stat['new_h'] = $stat['setup']['img_height'];
 		$stat['offset_x'] = 0;
 		$stat['offset_y'] = 0;
-		$stat['browser_cache'] = 1;
+		$stat['browser_cache'] = 60 * 10;
 
 	// }
 
@@ -140,7 +180,7 @@
 		// CACHE }
 
 	// }
-	
+
 	// UNSET COOKIES {
 
 		//for ( $i = 1; $i <= 100; $i++ ) {
@@ -171,9 +211,9 @@
 		readfile( $stat['path_cache_file'] );
 
 		//error_log( print_r( $stat, true) );
-		
+
 		exit( );
 
 	// }
-	
+
 ?>

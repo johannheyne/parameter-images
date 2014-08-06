@@ -1,0 +1,12 @@
+body {
+    margin: 0;
+}
+
+.wrap {
+    max-width: 1000px;
+    margin: auto;
+}
+
+.resp {
+    width: 100%;
+}
