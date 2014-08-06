@@ -12,16 +12,13 @@ Der Entwurf 2 zu einer gesamtheitlichen Lösung zu Bildern in RWD geht von dem A
 // php
 $setup = array(
 	'behaviorname' => array(
-		'1' => array(
-			'window_max_width' => 400,
+		'400' => array(
 			'img_width' => 400
 		),
-		'2' => array(
-			'window_max_width' => 800,
+		'800' => array(
 			'img_width' => 800
 		),
-		'3' => array(
-			'window_max_width' => 1200,
+		'9999' => array(
 			'img_width' => 1200
 		),
 	),
@@ -30,12 +27,12 @@ $setup = array(
 
 ```html
 <!-- html -->
-<img data-resp="{'maxw-400':'1','maxw-800':'2','maxw-1200':'3'}" 
-	 data-current-size="3" 
-	 src="image.jpg?behavior=behaviorname&size=3">
+<img data-respbehavior="[400,800,9999]" 
+	 data-breakpoint="800" 
+	 src="image.jpg?behavior=behaviorname&breakpoint=800">
 ```
 
-Anhand des Data Attributes ```data-current-size``` und dem im Data Attribut ```data-resp``` gegebenem JSON-Objektes kann ein Javaskript bei Größenveränderung des Browserfensters überprüfen, ob eine neue Bildgröße / -variante eforderlich ist. Das Skript würde den scr Parameter size anpassen, was ein Neuladen des Bildes mit den veränderten Maßen bewirkt.
+Anhand des Data Attributes ```data-breakpoint``` und dem im Data Attribut ```data-respbehavior``` gegebenem JSON-Objektes kann ein Javaskript bei Größenveränderung des Browserfensters überprüfen, ob eine neue Bildgröße / -variante eforderlich ist. Das Skript würde den scr Parameter breakpoint anpassen, was ein Neuladen des Bildes mit den veränderten Maßen bewirkt.
 
 Die Zukunf
 ----------------
