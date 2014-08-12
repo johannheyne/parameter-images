@@ -13,6 +13,10 @@
 		$stat['offset_x'] = false;
 		$stat['offset_y'] = false;
 		$stat['browser_cache'] = false;
+		$stat['breakpoint'] = false;
+
+		$stat['devicedata'] = false;
+		$stat['window_width'] = false;
 
 		$stat['uri'] = false;
 		$stat['path_root'] = false;
@@ -53,7 +57,8 @@
 				) {
 
 					$stat['setup'] = $item;
-
+					$stat['breakpoint'] = $breakpoint;
+					
 					$temp_breakpoint = $breakpoint;
 				}
 			}
@@ -63,6 +68,7 @@
 			if ( isset( $setup[ $_GET['behavior'] ][ $_GET['breakpoint'] ] ) ) {
 
 				$stat['setup'] = $setup[ $_GET['behavior'] ][ $_GET['breakpoint'] ];
+				$stat['breakpoint'] = $_GET['breakpoint'];
 			}
 		}
 
@@ -70,11 +76,11 @@
 
 	// SETUP PARAMETERS OF NEW IMAGE {
 
-		$stat['new_w'] = $stat['setup']['img_width'];
-		$stat['new_h'] = $stat['setup']['img_height'];
+		$stat['new_w'] = round( ( $stat['breakpoint'] / 100 ) * $stat['setup']['img_width'], 0, PHP_ROUND_HALF_UP );
+		$stat['new_h'] = round( $stat['new_w'] * $stat['setup']['ratio'], 0, PHP_ROUND_HALF_UP );
 		$stat['offset_x'] = 0;
 		$stat['offset_y'] = 0;
-		$stat['browser_cache'] = 60 * 10;
+		$stat['browser_cache'] = 1;
 
 	// }
 
@@ -85,7 +91,7 @@
 		$stat['filename'] = basename( $stat['uri'] );
 		$stat['extension'] = strtolower( pathinfo( $stat['filename'], PATHINFO_EXTENSION ) );
 		$stat['path_file'] = $stat['path_root'] . trim( $stat['uri'], '/' );
-		$stat['path_cache_file'] = $stat['path_root'] . 'cache/' . trim( $stat['uri'], '/' );
+		$stat['path_cache_file'] = $stat['path_root'] . 'cache' . dirname( $stat['uri'] ) . '/' . $_GET['behavior'] . '/' . $stat['new_w'] . '-' . $stat['new_h'] . '-' . $stat['filename']; // '/' . $_GET['behavior']
 
 	// }
 
@@ -210,7 +216,6 @@
 		header( 'Content-Length: ' . filesize( $stat['path_cache_file'] ) );
 		readfile( $stat['path_cache_file'] );
 
-		//error_log( print_r( $stat, true) );
 
 		exit( );
 

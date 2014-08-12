@@ -35,6 +35,7 @@
 
 		</script>
 
+		<?php include( 'parameter-images/css-generator.php' ); ?>
 		<link rel="stylesheet" href="css/styles.css" type="text/css" />
 		<link rel="stylesheet" href="parameter-images/css/images-mediaqueries.css" type="text/css" />
 		<style rel="stylesheet" type="text/css">

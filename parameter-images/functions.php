@@ -62,7 +62,7 @@
 		
 	    if ( $p['behavior'] ) {
 			
-			$vars['return'] .= '<img class="resp" src="' . $p['src'] . '?behavior=' . $p['behavior'] . '" data-respbehavior="' . $respbehavior_json . '">';
+			$vars['return'] .= '<img class="resp behavior-' . $p['behavior'] . '" src="' . $p['src'] . '?behavior=' . $p['behavior'] . '" data-respbehavior="' . $respbehavior_json . '">';
 			
 			return $vars['return'];
 	    }

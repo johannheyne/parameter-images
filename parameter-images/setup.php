@@ -32,20 +32,20 @@
 	$setup = array(
 		'banner' => array(
 			'400' => array(
-				'img_width' => 400,
-				'img_height' => 200,
+				'img_width' => 100,
+				'ratio' => 0.4,
 			),
 			'600' => array(
-				'img_width' => 600,
-				'img_height' => 150,
+				'img_width' => 75,
+				'ratio' => 0.3,
 			),
 			'800' => array(
-				'img_width' => 800,
-				'img_height' => 200,
+				'img_width' => 50,
+				'ratio' => 0.3,
 			),
-			'9999' => array(
-				'img_width' => 1000,
-				'img_height' => 250,
+			'1300' => array(
+				'img_width' => 25,
+				'ratio' => 0.3,
 			),
 		),
 	);
