@@ -31,9 +31,9 @@
 
 	$setup = array(
 		'banner' => array(
-			'400' => array(
+			'0' => array(
 				'img_width' => 100,
-				'ratio' => 0.4,
+				'ratio' => 0.5,
 			),
 			'600' => array(
 				'img_width' => 75,
@@ -43,7 +43,7 @@
 				'img_width' => 50,
 				'ratio' => 0.3,
 			),
-			'1300' => array(
+			'1000' => array(
 				'img_width' => 25,
 				'ratio' => 0.3,
 			),

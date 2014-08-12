@@ -36,6 +36,7 @@
 		</script>
 
 		<?php include( 'parameter-images/css-generator.php' ); ?>
+		<link rel="stylesheet" href="css/normalize.css" type="text/css" />
 		<link rel="stylesheet" href="css/styles.css" type="text/css" />
 		<link rel="stylesheet" href="parameter-images/css/images-mediaqueries.css" type="text/css" />
 		<style rel="stylesheet" type="text/css">
@@ -59,10 +60,14 @@
 
 			<?php
 
-				echo get_image( array(
-					'behavior' => 'banner',
-					'src' => 'images/square.jpg',
-				) );
+				for ( $i = 0; $i <= 100; $i++ ) {
+				    
+					echo get_image( array(
+						'behavior' => 'banner',
+						'src' => 'images/square.jpg',
+					) );
+				}
+				
 
 			?>
 

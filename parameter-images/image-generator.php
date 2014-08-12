@@ -17,7 +17,8 @@
 
 		$stat['devicedata'] = false;
 		$stat['window_width'] = false;
-
+		$stat['reduze'] = false;
+		
 		$stat['uri'] = false;
 		$stat['path_root'] = false;
 		$stat['path_cache_dir'] = false;
@@ -34,41 +35,47 @@
 
 	// GET THE IMAGE SETUP DATA OF BREAKPOINT {
 
-		if ( ! isset( $_GET['breakpoint'] ) ) {
+		if ( isset( $_COOKIE['devicedata'] ) ) {
 
-			if ( isset( $_COOKIE['devicedata'] ) ) {
-
-				$stat['devicedata'] = json_decode( stripslashes( $_COOKIE['devicedata'] ), true );
-				$stat['window_width'] = $stat['devicedata']['window']['width'];
-			}
-			else {
-
-				$stat['window_width'] = 9999;
-			}
-
-			ksort( $setup[ $_GET['behavior'] ] );
-			$temp_breakpoint = 0;
-
-			foreach ( $setup[ $_GET['behavior'] ] as $breakpoint => $item ) {
-
-		    	if ( 
-					! isset( $stat['setup'] ) 
-					OR ( $breakpoint >= $stat['window_width'] AND $temp_breakpoint < $stat['window_width'] ) 
-				) {
-
-					$stat['setup'] = $item;
-					$stat['breakpoint'] = $breakpoint;
-					
-					$temp_breakpoint = $breakpoint;
-				}
-			}
+			$stat['devicedata'] = json_decode( stripslashes( $_COOKIE['devicedata'] ), true );
+			$stat['window_width'] = $stat['devicedata']['window']['width'];
 		}
 		else {
 
-			if ( isset( $setup[ $_GET['behavior'] ][ $_GET['breakpoint'] ] ) ) {
+			$stat['window_width'] = 9999;
+		}
 
-				$stat['setup'] = $setup[ $_GET['behavior'] ][ $_GET['breakpoint'] ];
-				$stat['breakpoint'] = $_GET['breakpoint'];
+		ksort( $setup[ $_GET['behavior'] ] );
+		
+		if ( isset( $_GET['breakpoint'] ) ) {
+		
+			$check_width = $_GET['breakpoint'];
+		}
+		else {
+		
+			$check_width = $stat['window_width'];
+		}
+		
+		foreach ( $setup[ $_GET['behavior'] ] as $breakpoint => $item ) {
+			
+			if ( 
+				! isset( $stat['setup'] ) 
+				OR ( $breakpoint <= $check_width ) 
+			) {
+				
+				$stat['setup'] = $item;
+			    $stat['breakpoint'] = $breakpoint;
+				$set_breakpoint = true;
+				$stat['reduze'] = 0;
+			}
+			else {
+				
+				if ( isset( $set_breakpoint ) ) {
+				
+				    $stat['breakpoint'] = $breakpoint;
+					unset( $set_breakpoint );
+					$stat['reduze'] = 1;
+				}
 			}
 		}
 
@@ -76,7 +83,7 @@
 
 	// SETUP PARAMETERS OF NEW IMAGE {
 
-		$stat['new_w'] = round( ( $stat['breakpoint'] / 100 ) * $stat['setup']['img_width'], 0, PHP_ROUND_HALF_UP );
+		$stat['new_w'] = round( ( $stat['breakpoint'] / 100 ) * $stat['setup']['img_width'], 0, PHP_ROUND_HALF_UP ) - $stat['reduze'];
 		$stat['new_h'] = round( $stat['new_w'] * $stat['setup']['ratio'], 0, PHP_ROUND_HALF_UP );
 		$stat['offset_x'] = 0;
 		$stat['offset_y'] = 0;

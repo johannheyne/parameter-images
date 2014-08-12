@@ -9,4 +9,5 @@ body {
 
 .resp {
     max-width: 100%;
+    display: block;
 }

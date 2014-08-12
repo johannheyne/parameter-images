@@ -7,10 +7,8 @@
 	
 		foreach ( $setup as $behavior => $item ) {
 	    	
-			krsort( $item );
-			
 			foreach ( $item as $breakpoint => $value ) {
-	    		echo '@media ( max-width: ' . $breakpoint . 'px  ) {';
+	    		echo '@media ( min-width: ' . $breakpoint . 'px  ) {';
 	
 					echo '.behavior-' . $behavior . ' { ';
 						echo 'width: ' . $value['img_width'] . '%;';

@@ -16,7 +16,7 @@ jQuery(document).ready(function($){
 
 			for ( var i in breakpoints ) {
 
-				if ( ! current_breakpoint && breakpoints[ i ] >= window_width ) {
+				if ( breakpoints[ i ] <= window_width ) {
 
 					current_breakpoint = breakpoints[ i ];
 				}
