@@ -43,6 +43,7 @@
 
 		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
 		<script src="parameter-images/js/responsive-behavior.js" type="text/javascript"></script>
+		<script src="parameter-images/js/responsive-data.js" type="text/javascript"></script>
 		<script type="text/javascript">
 
 		</script>
