@@ -14,11 +14,12 @@
 		$stat['offset_y'] = false;
 		$stat['browser_cache'] = false;
 		$stat['breakpoint'] = false;
+		$stat['breakpoint_step'] = false;
 
 		$stat['devicedata'] = false;
 		$stat['window_width'] = false;
 		$stat['reduze'] = false;
-		
+
 		$stat['uri'] = false;
 		$stat['path_root'] = false;
 		$stat['path_cache_dir'] = false;
@@ -46,32 +47,32 @@
 		}
 
 		ksort( $setup['breakpoints'][ $_GET['behavior'] ] );
-		
+
 		if ( isset( $_GET['breakpoint'] ) ) {
-		
+
 			$check_width = $_GET['breakpoint'];
 		}
 		else {
-		
+
 			$check_width = $stat['window_width'];
 		}
-		
+
 		foreach ( $setup['breakpoints'][ $_GET['behavior'] ] as $breakpoint => $item ) {
-			
+
 			if ( 
 				! isset( $stat['setup'] ) 
 				OR ( $breakpoint <= $check_width ) 
 			) {
-				
+
 				$stat['setup'] = $item;
 			    $stat['breakpoint'] = $breakpoint;
 				$set_breakpoint = true;
 				$stat['reduze'] = 0;
 			}
 			else {
-				
+
 				if ( isset( $set_breakpoint ) ) {
-				
+
 				    $stat['breakpoint'] = $breakpoint;
 					unset( $set_breakpoint );
 					$stat['reduze'] = 1;
@@ -82,20 +83,25 @@
 	// }
 
 	// GET SIZESTEP {
-		
+
 		for ( $i = $setup['sizesteps']['end']; $i >= $setup['sizesteps']['start']; $i = $i - $setup['sizesteps']['step'] ) {
 
-			if ( $i >= $stat['window_width'] ) {
-			    
+			if ( $i > $check_width ) {
+
 				$stat['breakpoint_step'] = $i;
-				
+
 				if ( $stat['breakpoint_step'] < $stat['breakpoint'] && $stat['breakpoint_step'] !== $stat['breakpoint'] ) {
-				
+
 					$stat['reduze'] = 0;
 				}
 			}
 		}
 		
+		if ( ! $stat['breakpoint_step'] ) {
+		    
+			$stat['breakpoint_step'] = $setup['sizesteps']['end'];
+		}
+
 	// }
 
 	// SETUP PARAMETERS OF NEW IMAGE {
@@ -239,7 +245,6 @@
 		header( 'Expires: ' . gmdate( 'D, d M Y H:i:s', time( ) + $stat['browser_cache'] ) . ' GMT' );
 		header( 'Content-Length: ' . filesize( $stat['path_cache_file'] ) );
 		readfile( $stat['path_cache_file'] );
-
 
 		exit( );
 

@@ -1,42 +1,98 @@
+function getCookie(cname) {
+    var name = cname + "=";
+    var ca = document.cookie.split(';');
+    for(var i=0; i<ca.length; i++) {
+        var c = ca[i];
+        while (c.charAt(0)==' ') c = c.substring(1);
+        if (c.indexOf(name) != -1) return c.substring(name.length,c.length);
+    }
+    return "";
+}
+
 jQuery.noConflict();
 jQuery(document).ready(function($){
 
 	function responsive_images_refresh() {
 
-	    var obj_images = $( '[data-respbehavior]' )
-			window_width = $( window ).width();
+	    var obj_images = $( '[data-respbehavior]' ),
+			window_width = $( window ).width(),
+			devicedata = $.parseJSON( getCookie( 'devicedata' ) );
 
 		obj_images.each( function() {
 
-			var t = $( this ),
-				breakpoints = t.data('respbehavior'),
-				current_breakpoint = false,
-				last_breakpoint = t.data('breakpoint'),
-				src = t.attr('src');
+			// SETUP VARIABLES {
 
-			for ( var i in breakpoints ) {
+				var t = $( this ),
+					respbehavior = $.parseJSON( t.attr('data-respbehavior') ),
+					breakpoints = respbehavior.bp,
+					current_breakpoint = false,
+					current_breakpoint_step = false,
+					breakpoint_steps = [],
+					last_breakpoint = t.data('breakpoint'),
+					src = t.attr('src');
 
-				if ( breakpoints[ i ] <= window_width ) {
+			// }
 
-					current_breakpoint = breakpoints[ i ];
+			// DEFAULT LAST BREAKPOINT BY COOKIE {
+
+				for ( var i = respbehavior.se; i >= respbehavior.ss; i = i - respbehavior.st ) {
+
+					breakpoint_steps.push( i );
+
+                   	if ( i >= window_width ) {
+
+						current_breakpoint_step = i;
+					}
 				}
-			}
 
-			if ( current_breakpoint !== last_breakpoint ) {
+				$.extend( breakpoints, breakpoint_steps );
 
-				if ( typeof last_breakpoint === 'undefined' ) {
+			// }
 
-					t.attr( 'src', src + '&breakpoint=' + current_breakpoint );
-					t.data( 'breakpoint', current_breakpoint );
+			// GET THE CURRENT BREAKPOINT {
+
+				breakpoints.sort(function(a, b) {
+				  return +/\d+/.exec(a)[0] - +/\d+/.exec(b)[0];
+				});
+
+				//breakpoints.reverse();
+
+				for ( var i in breakpoints ) {
+
+					if ( breakpoints[ i ] <= window_width ) {
+
+						current_breakpoint = breakpoints[ i ];
+					}
 				}
-				else {
+				console.log( current_breakpoint );
 
-					var bp_index = src.lastIndexOf('&breakpoint');
-					src = src.slice( 0, bp_index )
-					t.attr( 'src', src + '&breakpoint=' + current_breakpoint );
-					t.data( 'breakpoint', current_breakpoint );
+			// }
+
+			// CHANGE BREAKPOINT IN SRC {
+
+				if ( current_breakpoint !== last_breakpoint ) {
+
+					// CHANGE SRC {
+
+						var bp_index = src.lastIndexOf('&breakpoint');
+
+						if ( bp_index === -1 ) {
+
+							t.attr( 'src', src + '&breakpoint=' + current_breakpoint );
+							t.data( 'breakpoint', current_breakpoint );
+						}
+						else {
+
+							src = src.slice( 0, bp_index )
+							t.attr( 'src', src + '&breakpoint=' + current_breakpoint );
+							t.data( 'breakpoint', current_breakpoint );
+						}
+
+					// }
+
 				}
-			}
+
+			// }
 
 		} );
 
