@@ -81,9 +81,26 @@
 
 	// }
 
+	// GET SIZESTEP {
+		
+		for ( $i = $setup['sizesteps']['end']; $i >= $setup['sizesteps']['start']; $i = $i - $setup['sizesteps']['step'] ) {
+
+			if ( $i >= $stat['window_width'] ) {
+			    
+				$stat['breakpoint_step'] = $i;
+				
+				if ( $stat['breakpoint_step'] < $stat['breakpoint'] && $stat['breakpoint_step'] !== $stat['breakpoint'] ) {
+				
+					$stat['reduze'] = 0;
+				}
+			}
+		}
+		
+	// }
+
 	// SETUP PARAMETERS OF NEW IMAGE {
 
-		$stat['new_w'] = round( ( $stat['breakpoint'] / 100 ) * $stat['setup']['img_width'], 0, PHP_ROUND_HALF_UP ) - $stat['reduze'];
+		$stat['new_w'] = round( ( $stat['breakpoint_step'] / 100 ) * $stat['setup']['img_width'], 0, PHP_ROUND_HALF_UP ) - $stat['reduze'];
 		$stat['new_h'] = round( $stat['new_w'] * $stat['setup']['ratio'], 0, PHP_ROUND_HALF_UP );
 		$stat['offset_x'] = 0;
 		$stat['offset_y'] = 0;

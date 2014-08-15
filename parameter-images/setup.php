@@ -30,6 +30,11 @@
 
 
 	$setup = array(
+		'sizesteps' => array(
+			'start' => 0,
+			'end' => 1300,
+			'step' => 50,
+		),
 		'breakpoints' => array(
 			'banner' => array(
 				'0' => array(
