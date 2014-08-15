@@ -1,20 +1,20 @@
-function myRound(zahl,n){
+function myRound( zahl, n ) {
     var faktor;
-    faktor = Math.pow(10,n);
-    return(Math.round(zahl * faktor) / faktor);
+    faktor = Math.pow( 10, n );
+    return( Math.round( zahl * faktor ) / faktor );
 }
 
 jQuery.noConflict();
 jQuery(document).ready(function($){
 	
 	
-	$( 'body' ).prepend( '<div class="open_responsive_images_popup" style="font-family: Arial, sans-serif; font-size: 1rem; line-height: 1.4rem; background: orange; opacity: 0.5; position: absolute; padding: 0 6px; color: black;">RespImg</div>' );
-	
-	$( '.open_responsive_images_popup' ).on( 'click', function() {
-	
-		var new_window = window.open( document.URL, "responsive_images_popup", "menubar=1,resizable=1,width=1024,height=1024" );
-		new_window.focus();
-	} );
+	//$( 'body' ).prepend( '<div class="open_responsive_images_popup" style="font-family: Arial, sans-serif; font-size: 1rem; line-height: 1.4rem; background: orange; opacity: 0.5; position: absolute; padding: 0 6px; color: black;">RespImg</div>' );
+	//
+	//$( '.open_responsive_images_popup' ).on( 'click', function() {
+	//
+	//	var new_window = window.open( document.URL, "responsive_images_popup", "menubar=1,resizable=1,width=1024,height=1024" );
+	//	new_window.focus();
+	//} );
 	
 	
 	
@@ -39,7 +39,7 @@ jQuery(document).ready(function($){
 				breakpoints_html += '<span class="responsive_images_breakpoint">' + breakpoints[ i ] + '</span> ';
 			}
 			
-			t.before('<div  id="' + index + '" class="responsive_images_data" style="font-family: Arial, sans-serif; font-size: 1rem; line-height: 1.4rem; background: orange; opacity: 0.5; position: relative; top: 4.2rem; display: inline-block; padding: 0 6px; max-width: 100%; color: black;">ID: ' + index + '<br>Width: ' + img_rel_width + '%,<br>Breakpoints: ' + breakpoints_html + '</div>');
+			t.after('<div  id="' + index + '" class="responsive_images_data" style="font-family: Arial, sans-serif; font-size: 1rem; line-height: 1.4rem; background: orange; opacity: 0.5; position: relative; display: inline-block; padding: 0 6px; max-width: 100%; color: black;">ID: ' + index + '<br>Width: ' + img_rel_width + '%,<br>Breakpoints: ' + breakpoints_html + '</div>');
 		
 		} );
 		

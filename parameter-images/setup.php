@@ -30,22 +30,24 @@
 
 
 	$setup = array(
-		'banner' => array(
-			'0' => array(
-				'img_width' => 100,
-				'ratio' => 0.5,
-			),
-			'600' => array(
-				'img_width' => 75,
-				'ratio' => 0.3,
-			),
-			'800' => array(
-				'img_width' => 50,
-				'ratio' => 0.3,
-			),
-			'1000' => array(
-				'img_width' => 25,
-				'ratio' => 0.3,
+		'breakpoints' => array(
+			'banner' => array(
+				'0' => array(
+					'img_width' => 100,
+					'ratio' => 0.5,
+				),
+				'600' => array(
+					'img_width' => 75,
+					'ratio' => 0.3,
+				),
+				'800' => array(
+					'img_width' => 50,
+					'ratio' => 0.3,
+				),
+				'1000' => array(
+					'img_width' => 25,
+					'ratio' => 0.3,
+				),
 			),
 		),
 	);

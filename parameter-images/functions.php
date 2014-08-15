@@ -25,15 +25,13 @@
 
 			$vars['return'] = false;
 			
-			global $setup;
-			
 		// }
 		
 		// PREPARE BEHAVIOR JSON {
 			
 			$respbehavior_arr = array();
 			
-			foreach ( $setup[ $p['behavior'] ] as $key => $item ) {
+			foreach ( $setup['breakpoints'][ $p['behavior'] ] as $key => $item ) {
 			    
 				array_push( $respbehavior_arr, $key );
 			}
@@ -47,10 +45,10 @@
 			/*$devicedata = json_decode( stripslashes( $_COOKIE['devicedata'] ), true );
 			$window_width = $devicedata['window']['width'];
 			
-			ksort( $setup[ $p['behavior'] ] );
+			ksort( $setup['breakpoints'][ $p['behavior'] ] );
 			$current_breakpoint = false;
 
-			foreach ( $setup[ $p['behavior'] ] as $breakpoint => $item ) {
+			foreach ( $setup['breakpoints'][ $p['behavior'] ] as $breakpoint => $item ) {
 
 		    	if ( ! $current_breakpoint &&  $breakpoint >= $window_width ) {
 

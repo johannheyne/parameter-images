@@ -60,7 +60,7 @@
 
 			<?php
 
-				for ( $i = 0; $i <= 100; $i++ ) {
+				for ( $i = 1; $i <= 1; $i++ ) {
 				    
 					echo get_image( array(
 						'behavior' => 'banner',

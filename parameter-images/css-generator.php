@@ -5,7 +5,7 @@
 	
 	echo '<style>';
 	
-		foreach ( $setup as $behavior => $item ) {
+		foreach ( $setup['breakpoints'] as $behavior => $item ) {
 	    	
 			foreach ( $item as $breakpoint => $value ) {
 	    		echo '@media ( min-width: ' . $breakpoint . 'px  ) {';

@@ -45,7 +45,7 @@
 			$stat['window_width'] = 9999;
 		}
 
-		ksort( $setup[ $_GET['behavior'] ] );
+		ksort( $setup['breakpoints'][ $_GET['behavior'] ] );
 		
 		if ( isset( $_GET['breakpoint'] ) ) {
 		
@@ -56,7 +56,7 @@
 			$check_width = $stat['window_width'];
 		}
 		
-		foreach ( $setup[ $_GET['behavior'] ] as $breakpoint => $item ) {
+		foreach ( $setup['breakpoints'][ $_GET['behavior'] ] as $breakpoint => $item ) {
 			
 			if ( 
 				! isset( $stat['setup'] ) 
